@@ -11,8 +11,8 @@ int main(void)
 	 * after the first call to this func, a subsequent call to split the next delimited
 	 * str takes in NULL as an argument in the str parameter - strtok(NULL, delim)
 	 *
-	 * Returns ptr to a tokenised null terminated str (fraction of the str splitted by a delimiter) or NULL when all chars in
-	 * the str are all read.
+	 * Returns ptr to a tokenised null terminated str (fraction of the str splitted by a delimiter) or
+  	 * NULL when all chars of the str are all read.
 	 */
 	char *strToken, *deli = " ", s[] = "this is a string";
 
