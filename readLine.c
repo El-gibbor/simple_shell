@@ -44,9 +44,13 @@ int main(void)
 	char *lineBuff = NULL; /*must be assigned NULL*/
 
 	printf("$ ");
-	getline(&lineBuff, &n, stdin);
+	for (;;)
+	{
+		if (getline(&lineBuff, &n, stdin) != -1)
+			printf("%slength of buffer: %ld\n", lineBuff, n);
+			printf("$ ");
+	}
 	//**line is null terminated and includes a newline char
-	printf("%slength of buffer: %ld\n", lineBuff, n);
 
 	/*memory must be freed by user after use*/
 	free(lineBuff);
