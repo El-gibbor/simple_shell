@@ -1,4 +1,0 @@
-#!/bin/env bash
-# prints the maximum process ID value of the sys
-
-cat /proc/sys/kernel/pid_max
