@@ -1,3 +1,3 @@
-![Screenshot 2023-07-16 151925](https://github.com/DestinedCodes/simple_shell/assets/107848793/04a9a878-8831-423e-bb5a-74116ce41cac)  
+![Screenshot 2023-07-17 132635](https://github.com/DestinedCodes/simple_shell/assets/107848793/a964864d-2df8-4212-a951-84ea064b8da7)  
 # simple_shell
 Implementing a simple UNIX command interpreter..
