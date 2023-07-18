@@ -16,7 +16,6 @@ int main(__attribute__((unused)) int ac, char *av[])
 	{
 		if (interactive_mode)
 			write(STDOUT_FILENO, "#cisfun$ ", 9);
-
 		if (getline(&cmd_line, &size_line, stdin) == -1)
 		{
 			if (interactive_mode)
@@ -34,7 +33,6 @@ int main(__attribute__((unused)) int ac, char *av[])
 
 		_strcpy(args[0], cmd_line);
 		args[1] = NULL;
-
 		execute_cmd(args, av);
 
 		free(args[0]);
