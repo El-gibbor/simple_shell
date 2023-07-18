@@ -9,6 +9,8 @@
 #include <sys/wait.h>
 
 /************ Signature declarations ********/
+int _strlen(char *s);
 extern char **environ;
+char *_strcpy(char *dest, const char *src);
 
 #endif
