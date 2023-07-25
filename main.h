@@ -28,6 +28,7 @@ typedef enum cmd
 
 
 /*========== functions for string manipulation ===========*/
+void free_grid(char **arr);
 size_t strpbrk_no(const char *s, char *accept);
 size_t _strspn(const char *s, char *accept);
 size_t _strlen(const char *s);
