@@ -13,6 +13,12 @@
 
 #define BUFFSIZE 1024
 
+typedef enum boolean
+{
+	FALSE,
+	TRUE
+} bool_t;
+
 /* Command Status */
 typedef enum cmd
 {
