@@ -32,6 +32,7 @@ size_t strpbrk_no(const char *s, char *accept);
 size_t _strspn(const char *s, char *accept);
 size_t _strlen(const char *s);
 int _strncmp(const char *s1, const char *s2, unsigned int n);
+ssize_t _getline(char **cmd_line, size_t *n, int fd);
 
 char *_strdup(const char *str);
 const char *_strchrnul(const char *s, int c);
