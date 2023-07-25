@@ -41,3 +41,39 @@ size_t strpbrk_no(const char *s, char *accept)
 	return (pos);
 }
 
+
+/**
+ * _strlen - calculates the length of a string
+ * @s: a pointer to a string
+ * Return: length of a string
+ */
+size_t _strlen(const char *s)
+{
+	size_t len;
+
+	for (len = 0; s[len]; len++)
+		;
+	return (len);
+}
+
+/**
+ * _strspn - gets the length of a prefix substring
+ * @s: the string
+ * @accept: a string
+ * Return: the number of bytes in the initial segment
+ * of s which consist only of bytes from accept
+ */
+size_t _strspn(const char *s, char *accept)
+{
+	char *p;
+	size_t pos;
+
+	for (pos = 0; s[pos]; pos++)
+	{
+		for (p = accept; s[pos] != *p && *p; p++)
+			;
+		if (!*p)
+			break;
+	}
+	return (pos);
+}
