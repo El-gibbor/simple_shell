@@ -12,9 +12,9 @@ ssize_t _getline(char **cmd_line, size_t *n, int fd)
 	char buf;
 	ssize_t num_read;
 
-	*cmd_line = calloc(sizeof(char), 10246 + 1);
+	*cmd_line = calloc(sizeof(char), BUFFSIZE + 1);
 
-	while ((num_read = read(fd, &buf, 1)) > 0 && (*n < 10246))
+	while ((num_read = read(fd, &buf, 1)) > 0 && (*n < BUFFSIZE))
 	{
 		if (buf == '\n')
 		{
