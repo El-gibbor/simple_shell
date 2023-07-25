@@ -28,7 +28,6 @@ typedef enum cmd
 
 
 /*========== functions for string manipulation ===========*/
-void free_grid(char **arr);
 size_t strpbrk_no(const char *s, char *accept);
 size_t _strspn(const char *s, char *accept);
 size_t _strlen(const char *s);
@@ -39,4 +38,25 @@ char *_strdup(const char *str);
 const char *_strchrnul(const char *s, int c);
 char *string_nconcat(char *s1, char *s2, unsigned int n);
 char *_strncpy(char *dest, char *src, int n);
+
+char **tokenize_str(char *str, char *delim);
+size_t words_count(const char *s, const char *delim);
+void free_grid(char **arr);
+/* ========== PATH Directories ========== */
+
+/**
+ * struct path - a list of directories in the PATH.
+ * @dir: a pointer to a pathname.
+ * @next_dir: a pointer to the next pathname in the list.
+ */
+typedef struct path
+{
+	char *dir;
+	struct path *next_dir;
+} path_t;
+
+path_t *build_path(void);
+path_t *add_path_dir(path_t **head, const char *s);
+void print_path_list(const path_t *h);
+void free_path_list(path_t *h);
 #endif /* main.h */
