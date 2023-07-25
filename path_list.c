@@ -46,3 +46,34 @@ path_t *add_path_dir(path_t **head, const char *s)
 
 	return (new_dir);
 }
+
+/**
+ * print_path_list - prints a list of PATH directories.
+ * @h: a pointer to the first node of the list.
+ */
+void print_path_list(const path_t *h)
+{
+	for (; h; h = h->next_dir)
+	{
+		write(1, h->dir, _strlen(h->dir));
+		write(1, "\n", 1);
+	}
+}
+
+/**
+ * free_path_list - frees a list of PATH directories.
+ * @h: a pointer to the first node of the list.
+ */
+void free_path_list(path_t *h)
+{
+	path_t *tmp;
+
+	tmp = NULL;
+	for (; h;)
+	{
+		tmp = h;
+		h = h->next_dir;
+		free(tmp->dir);
+		free(tmp);
+	}
+}
