@@ -27,4 +27,8 @@ size_t _strspn(const char *s, char *accept);
 size_t _strlen(const char *s);
 int _strncmp(const char *s1, const char *s2, unsigned int n);
 
+char *_strdup(const char *str);
+const char *_strchrnul(const char *s, int c);
+char *string_nconcat(char *s1, char *s2, unsigned int n);
+char *_strncpy(char *dest, char *src, int n);
 #endif /* main.h */
