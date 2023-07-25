@@ -20,4 +20,5 @@ typedef enum cmd
 	FOUND
 } cmd_t;
 
-#endif
+
+#endif /* main.h */
