@@ -91,4 +91,27 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	return (str);
 }
 
+/**
+ * _strdup - duplicates a string
+ * @str: the string to be duplicated
+ * Return: a pointer to the duplicated string when successful
+ * if insufficient memory was available, return NULL.
+ */
+char *_strdup(const char *str)
+{
+	int len = 0, i = 0;
+	char *tmp;
+
+	if (str == NULL)
+		return (NULL);
+	len = _strlen(str);
+	tmp = malloc(sizeof(char) * (len + 1));
+	if (tmp == NULL)
+		return (NULL);
+
+	for (; i < len; i++)
+		tmp[i] = str[i];
+	tmp[i] = '\0';
+	return (tmp);
+}
 
