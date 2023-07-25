@@ -42,3 +42,17 @@ char *_strncpy(char *dest, char *src, int n)
 	dest -= len;
 	return (dest);
 }
+
+/**
+ * _strchrnul - locates a character in a string.
+ * @s: the string to be searched.
+ * @c: the character to be located.
+ * Return: a pointer to the first occurrence of c, if found
+ * otherwise, a pointer to the null byte.
+ */
+const char *_strchrnul(const char *s, int c)
+{
+	for (; *s && *s != c; s++)
+		;
+	return (s);
+}
