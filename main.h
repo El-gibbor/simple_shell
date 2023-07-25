@@ -11,4 +11,13 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#define BUFFSIZE 1024
+
+/* Command Status */
+typedef enum cmd
+{
+	NOT_FOUND,
+	FOUND
+} cmd_t;
+
 #endif
