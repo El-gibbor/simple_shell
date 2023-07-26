@@ -37,7 +37,6 @@ int get_cmd(int interactive_mode)
 	size_t size = 0;
 	struct stat statbuf;
 	cmd_t cmd_stat = FOUND;		/* Command status */
-
 	/* getting command from the commandline */
 	if (_getline(&cmd_line, &size, STDIN_FILENO) == -1)
 	{
@@ -47,16 +46,15 @@ int get_cmd(int interactive_mode)
 		return (1);
 	}
 	ch_handler(cmd_line);
-
 	args = tokenize_str(cmd_line, " \n\t");		/* tokenize the command */
 	free(cmd_line);
 	if (args[0] == NULL)
 		return (0);
-	/*	if (builtin_handler(args) == TRUE)
-	{
-		free_grid(args);
-		return (0);
-	} */
+	/*	if (builtin_handler(args) == TRUE) */
+	/*{*/
+	/*	free_grid(args);*/
+	/*	return (0);*/
+	/*} */
 	/* Search for command in current path and in PATH */
 	if (stat(args[0], &statbuf) != 0)
 	{
@@ -68,11 +66,8 @@ int get_cmd(int interactive_mode)
 			args[0] = path;
 			cmd_stat = FOUND;
 		}
-		execute_cmd(args, cmd_stat);
 	}
-	else
-		execute_cmd(args, cmd_stat);
+	execute_cmd(args, cmd_stat);
 	free_grid(args);
-
 	return (0);
 }

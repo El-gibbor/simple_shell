@@ -7,7 +7,7 @@
  */
 cmd_t builtin_handler(char **args)
 {
-	struct builtin cmd_arr[] = {
+	built_t cmd_arr[] = {
 		{"exit", exit_cmd},
 		{"env", env_cmd},
 		{NULL, NULL}	};

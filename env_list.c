@@ -1,6 +1,5 @@
 #include "main.h"
-
-envlist_t *head;
+#include "env.h"
 
 /**
  * build_env - creates a linked list of environment variables.
