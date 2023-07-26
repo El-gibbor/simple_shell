@@ -27,7 +27,9 @@ typedef enum cmd
 } cmd_t;
 
 
+
 /*========== functions for string manipulation ===========*/
+
 size_t strpbrk_no(const char *s, char *accept);
 size_t _strspn(const char *s, char *accept);
 size_t _strlen(const char *s);
@@ -59,4 +61,9 @@ path_t *build_path(void);
 path_t *add_path_dir(path_t **head, const char *s);
 void print_path_list(const path_t *h);
 void free_path_list(path_t *h);
+
+/* ========== Environment =========== */
+extern char **environ;
+char *_getenv(const char *name);
+
 #endif /* main.h */
