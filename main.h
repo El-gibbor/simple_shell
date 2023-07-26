@@ -27,7 +27,6 @@ typedef enum cmd
 } cmd_t;
 
 
-extern char **environ;
 
 /*========== functions for string manipulation ===========*/
 
@@ -64,6 +63,7 @@ void print_path_list(const path_t *h);
 void free_path_list(path_t *h);
 
 /* ========== Environment =========== */
+extern char **environ;
 char *_getenv(const char *name);
 
 #endif /* main.h */
