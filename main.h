@@ -11,7 +11,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#define BUFFSIZE 1024
+#define BUFFSIZE 10240
 
 typedef enum boolean
 {
