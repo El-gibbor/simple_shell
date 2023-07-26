@@ -52,6 +52,7 @@ char *path_handler(char *cmd)
  * ch_handler - handle quotes in a string.
  * @s: a pointer to a string.
  */
+void ch_handler(char *s)
 {
 	int i, j;
 

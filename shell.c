@@ -8,7 +8,7 @@
  */
 int main(int ac, char **av)
 {
-	char *promp = "#cisfun~$ ";
+	char *prompt = "#cisfun~$ ";
 	int interactive_mode = isatty(STDIN_FILENO);
 
 	while (1)

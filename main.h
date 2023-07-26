@@ -30,7 +30,7 @@ typedef enum cmd
 /* =========== SHELL ============ */
 void ch_handler(char *s);
 void error_exit(const char *s);
-int get_cmd(int interactive mode);
+int get_cmd(int interactive_mode);
 void execute_cmd(char **args, cmd_t cmd_stat);
 char *path_handler(char *cmd);
 
