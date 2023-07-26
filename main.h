@@ -27,6 +27,12 @@ typedef enum cmd
 } cmd_t;
 
 
+/* =========== SHELL ============ */
+void ch_handler(char *s);
+void error_exit(const char *s);
+int get_cmd(int interactive mode);
+void execute_cmd(char **args, cmd_t cmd_stat);
+char *path_handler(char *cmd);
 
 /*========== functions for string manipulation ===========*/
 size_t strpbrk_no(const char *s, char *accept);
