@@ -3,7 +3,7 @@
 /**
  * execute_cmd - executes command by calling execve in a child process
  * @args: an array of pointers to strings / commands.
- * @cmd: command status, whether found or not.
+ * @cmd_stat: command status, whether found or not.
  */
 void execute_cmd(char **args, cmd_t cmd_stat)
 {

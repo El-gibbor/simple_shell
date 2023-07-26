@@ -2,6 +2,8 @@
 
 /**
  * exit_cmd - exits the program with a termination status.
+ * @cmd: an array of commands.
+ * Return: Doesn't return, it exits
  */
 cmd_t exit_cmd(char **cmd)
 {

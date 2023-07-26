@@ -15,7 +15,8 @@ envlist_t *build_env(void)
 	for (i = 0; environ[i]; i++)
 	{
 		tmp = tokenize_str(environ[i], "=");
-		if (add_env_var(&head, tmp[0], _getenv(tmp[0])) == NULL) {
+		if (add_env_var(&head, tmp[0], _getenv(tmp[0])) == NULL)
+		{
 			;/* Error Message */
 		}
 		free_grid(tmp);
