@@ -29,15 +29,6 @@ typedef enum cmd
 
 
 /*========== functions for string manipulation ===========*/
-int search_env_var(const envlist_t *head, const char *name);
-int overwrite_env_var(envlist_t *head, const char *name, const char *value);
-void print_env_list(const envlist_t *h);
-envlist_t *add_env_var(envlist_t **head, const char *var, const char *value);
-int delete_env_var(envlist_t **head, const char *name);
-void free_env_list(envlist_t *h);
-envlist_t *build_env(void);
-int _setenv(const char *name, const char *value, int overwrite);
-int _unsetenv(const char *name);
 size_t strpbrk_no(const char *s, char *accept);
 size_t _strspn(const char *s, char *accept);
 size_t _strlen(const char *s);
@@ -79,6 +70,15 @@ void free_path_list(path_t *h);
 extern char **environ;
 char *_getenv(const char *name);
 
+int search_env_var(const envlist_t *head, const char *name);
+int overwrite_env_var(envlist_t *head, const char *name, const char *value);
+void print_env_list(const envlist_t *h);
+envlist_t *add_env_var(envlist_t **head, const char *var, const char *value);
+int delete_env_var(envlist_t **head, const char *name);
+void free_env_list(envlist_t *h);
+envlist_t *build_env(void);
+int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(const char *name);
 
 struct builtin
 {
@@ -88,5 +88,6 @@ struct builtin
 cmd_t exit_cmd(char **);
 cmd_t builtin_handler(char **);
 cmd_t env_cmd(char **);
+
 
 #endif /* main.h */
