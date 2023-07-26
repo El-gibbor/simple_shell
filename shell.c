@@ -11,6 +11,9 @@ int main(int ac, char **av)
 	char *prompt = "#cisfun~$ ";
 	int interactive_mode = isatty(STDIN_FILENO);
 
+	(void) av;
+	(void) ac;
+
 	while (1)
 	{
 		if (interactive_mode)
