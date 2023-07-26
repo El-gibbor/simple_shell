@@ -40,7 +40,7 @@ char *_strdup(const char *str);
 const char *_strchrnul(const char *s, int c);
 char *string_nconcat(char *s1, char *s2, unsigned int n);
 char *_strncpy(char *dest, char *src, int n);
-
+int _atoi(char *s);
 char **tokenize_str(char *str, char *delim);
 size_t words_count(const char *s, const char *delim);
 void free_grid(char **arr);
