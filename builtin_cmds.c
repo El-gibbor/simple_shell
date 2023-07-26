@@ -42,5 +42,5 @@ cmd_t env_cmd(char **cmd)
 	print_env_list(head);
 	free_env_list(head);
 
-	return (TRUE);
+	return (FOUND);
 }
