@@ -26,7 +26,18 @@ typedef enum cmd
 	FOUND
 } cmd_t;
 
-
+/**
+ * struct envlist - a list of environment variables
+ * @env_var: a pointer to a variable's name.
+ * @value: a pointer to a variable's value.
+ * @next_env_var: a pointer to the next variable in the list.
+ */
+typedef struct envlist
+{
+	char *env_var;
+	char *value;
+	struct envlist *next_env_var;
+} envlist_t;
 
 /*========== functions for string manipulation ===========*/
 size_t strpbrk_no(const char *s, char *accept);
