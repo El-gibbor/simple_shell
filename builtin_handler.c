@@ -19,5 +19,5 @@ cmd_t builtin_handler(char **args)
 		if (!_strncmp(args[0], tmp, _strlen(args[0])))
 			return (cmd_arr[i].f(args));
 	}
-	return (FALSE);
+	return (NOT_FOUND);
 }
