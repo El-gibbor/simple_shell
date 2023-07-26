@@ -3,6 +3,7 @@
 /**
  * builtin_handler - handles built-in commands.
  * @args: an array of pointers to strings / commands.
+ * Return: FOUND or NOT_FOUND
  */
 cmd_t builtin_handler(char **args)
 {
@@ -19,5 +20,5 @@ cmd_t builtin_handler(char **args)
 		if (!_strncmp(args[0], tmp, _strlen(args[0])))
 			return (cmd_arr[i].f(args));
 	}
-	return (FALSE);
+	return (NOT_FOUND);
 }
