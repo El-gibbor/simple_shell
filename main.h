@@ -34,6 +34,7 @@ int get_cmd(int interactive mode);
 void execute_cmd(char **args, cmd_t cmd_stat);
 char *path_handler(char *cmd);
 
+
 /*========== functions for string manipulation ===========*/
 size_t strpbrk_no(const char *s, char *accept);
 size_t _strspn(const char *s, char *accept);
@@ -73,6 +74,20 @@ void print_path_list(const path_t *h);
 void free_path_list(path_t *h);
 
 /* ========== Environment =========== */
+
+/**
+ * struct envlist - a list of environment variables
+ * @env_var: a pointer to a variable's name.
+ * @value: a pointer to a variable's value.
+ * @next_env_var: a pointer to the next variable in the list.
+ */
+typedef struct envlist
+{
+	char *env_var;
+	char *value;
+	struct envlist *next_env_var;
+} envlist_t;
+
 extern char **environ;
 char *_getenv(const char *name);
 
