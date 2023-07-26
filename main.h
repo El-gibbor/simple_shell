@@ -71,4 +71,14 @@ void free_path_list(path_t *h);
 extern char **environ;
 char *_getenv(const char *name);
 
+
+struct builtin
+{
+	char *cmd;
+	cmd_t (*f)(char **);
+};
+cmd_t exit_cmd(char **);
+cmd_t builtin_handler(char **);
+cmd_t env_cmd(char **);
+
 #endif /* main.h */
