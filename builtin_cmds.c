@@ -35,7 +35,7 @@ cmd_t exit_cmd(char **cmd, int *status)
  * @cmd: an array of commands.
  * Return: always TRUE.
  */
-cmd_t env_cmd(char **cmd, int *status)
+cmd_t env_cmd(__attribute__((unused))char **cmd, int *status)
 {
 	int i;
 
