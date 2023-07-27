@@ -52,7 +52,7 @@ int get_cmd(int interactive_mode, int *exit_stat)
 		free(args);
 		return (0);
 	}
-	if (builtin_handler(args, exit_stat) == TRUE)
+	if (builtin_handler(args, exit_stat) == FOUND)
 	{
 		free_grid(args);
 		return (0);
