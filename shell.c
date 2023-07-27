@@ -8,6 +8,7 @@
  */
 int main(int ac, char **av)
 {
+	int exit_stat = 0;
 	char *prompt = "#cisfun~$ ";
 	int interactive_mode = isatty(STDIN_FILENO);
 
@@ -18,10 +19,10 @@ int main(int ac, char **av)
 	{
 		if (interactive_mode)
 			write(1, prompt, _strlen(prompt));
-		if (get_cmd(interactive_mode))
+		if (get_cmd(interactive_mode, &exit_stat))
 			break;
 	}
-	return (0);
+	exit(exit_stat);
 }
 
 /**
@@ -29,15 +30,12 @@ int main(int ac, char **av)
  * @interactive_mode: return of isatty(STDIN_FILENO).
  * Return: 0 on success, 1 on error.
  */
-int get_cmd(int interactive_mode)
+int get_cmd(int interactive_mode, int *exit_stat)
 {
-	char *path;
-	char *cmd_line = NULL;
-	char **args;
+	char *path, **args, *cmd_line = NULL;
 	size_t size = 0;
 	struct stat statbuf;
 	cmd_t cmd_stat = FOUND;		/* Command status */
-
 	/* getting command from the commandline */
 	if (_getline(&cmd_line, &size, STDIN_FILENO) == -1)
 	{
@@ -47,16 +45,18 @@ int get_cmd(int interactive_mode)
 		return (1);
 	}
 	ch_handler(cmd_line);
-
 	args = tokenize_str(cmd_line, " \n\t");		/* tokenize the command */
 	free(cmd_line);
 	if (args[0] == NULL)
+	{
+		free(args);
 		return (0);
-	/*	if (builtin_handler(args) == TRUE)
+	}
+	if (builtin_handler(args, exit_stat) == FOUND)
 	{
 		free_grid(args);
 		return (0);
-	} */
+	}
 	/* Search for command in current path and in PATH */
 	if (stat(args[0], &statbuf) != 0)
 	{
@@ -68,11 +68,8 @@ int get_cmd(int interactive_mode)
 			args[0] = path;
 			cmd_stat = FOUND;
 		}
-		execute_cmd(args, cmd_stat);
 	}
-	else
-		execute_cmd(args, cmd_stat);
+	execute_cmd(args, cmd_stat, exit_stat);
 	free_grid(args);
-
 	return (0);
 }

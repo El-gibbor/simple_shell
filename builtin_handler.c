@@ -5,9 +5,9 @@
  * @args: an array of pointers to strings / commands.
  * Return: FOUND or NOT_FOUND
  */
-cmd_t builtin_handler(char **args)
+cmd_t builtin_handler(char **args, int *status)
 {
-	struct builtin cmd_arr[] = {
+	built_t cmd_arr[] = {
 		{"exit", exit_cmd},
 		{"env", env_cmd},
 		{NULL, NULL}	};
@@ -18,7 +18,7 @@ cmd_t builtin_handler(char **args)
 	{
 		tmp = cmd_arr[i].cmd;
 		if (!_strncmp(args[0], tmp, _strlen(args[0])))
-			return (cmd_arr[i].f(args));
+			return (cmd_arr[i].f(args, status));
 	}
 	return (NOT_FOUND);
 }

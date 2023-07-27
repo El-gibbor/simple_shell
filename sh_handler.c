@@ -6,26 +6,7 @@
  * Return: a pointer to the path.
  */
 char *path_handler(char *cmd)
-{/*
-    char **args, *s, *tmp;
-    int i;
-    struct stat status;
-
-    args = tokenize_str(_getenv("PATH"), ":");
-    for (i = 0; args[i]; i++)
-    {
-    tmp = string_nconcat(args[i], "/", 1);
-    s = string_nconcat(tmp, cmd, _strlen(cmd));
-    free(tmp);
-    if (stat(s, &status) == 0)
-    {
-    free_grid(args);
-    return (s);
-    }
-    free(s);
-    }
-    free_grid(args); */
-
+{
 	char *path, *s;
 	path_t *head, *tmp = NULL;
 	struct stat status;
