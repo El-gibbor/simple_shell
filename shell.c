@@ -31,9 +31,7 @@ int main(int ac, char **av)
  */
 int get_cmd(int interactive_mode)
 {
-	char *path;
-	char *cmd_line = NULL;
-	char **args;
+	char *path, **args, *cmd_line = NULL;
 	size_t size = 0;
 	struct stat statbuf;
 	cmd_t cmd_stat = FOUND;		/* Command status */
@@ -49,7 +47,10 @@ int get_cmd(int interactive_mode)
 	args = tokenize_str(cmd_line, " \n\t");		/* tokenize the command */
 	free(cmd_line);
 	if (args[0] == NULL)
+	{
+		free(args);
 		return (0);
+	}
 	/*	if (builtin_handler(args) == TRUE) */
 	/*{*/
 	/*	free_grid(args);*/
