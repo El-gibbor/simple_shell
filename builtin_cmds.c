@@ -5,7 +5,7 @@
  * @cmd: an array of commands.
  * Return: Doesn't return, it exits
  */
-cmd_t exit_cmd(char **cmd, int status)
+cmd_t exit_cmd(char **cmd, int *status)
 {
 	char error[1024] = "./hsh: 1: exit: Illegal number: ";
 	int i;
@@ -13,7 +13,7 @@ cmd_t exit_cmd(char **cmd, int status)
 	if (cmd[1] == NULL)
 	{
 		free_grid(cmd);
-		exit(status);
+		exit(*status);
 	}
 
 	for (i = 0; cmd[1][i]; i++)
@@ -23,11 +23,11 @@ cmd_t exit_cmd(char **cmd, int status)
 			write(STDERR_FILENO, error, _strlen(error));
 			write(STDERR_FILENO, "\n", 1);
 			free_grid(cmd);
-			exit(status);
+			exit(*status);
 		}
-	status = _atoi(cmd[1]);
+	*status = _atoi(cmd[1]);
 	free_grid(cmd);
-	exit(0);
+	exit(*status);
 }
 
 /**
@@ -35,14 +35,15 @@ cmd_t exit_cmd(char **cmd, int status)
  * @cmd: an array of commands.
  * Return: always TRUE.
  */
-cmd_t env_cmd(char **cmd, __attribute__((unused))int status)
+cmd_t env_cmd(char **cmd, int *status)
 {
-	envlist_t *head;
+	int i;
 
-	(void) cmd;
-	head = build_env();
-	print_env_list(head);
-	free_env_list(head);
-
+	for (i = 0; environ[i]; i++)
+	{
+		write(1, environ[i], _strlen(environ[i]));
+		write(1, "\n", 1);
+	}
+	*status = 0;
 	return (FOUND);
 }

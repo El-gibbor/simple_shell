@@ -5,7 +5,7 @@
  * @args: an array of pointers to strings / commands.
  * Return: FOUND or NOT_FOUND
  */
-cmd_t builtin_handler(char **args, int status)
+cmd_t builtin_handler(char **args, int *status)
 {
 	built_t cmd_arr[] = {
 		{"exit", exit_cmd},

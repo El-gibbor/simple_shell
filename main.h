@@ -110,11 +110,11 @@ int _unsetenv(const char *name);
 typedef struct builtin
 {
 	char *cmd;
-	cmd_t (*f)(char **, int);
+	cmd_t (*f)(char **, int *);
 } built_t;
-cmd_t exit_cmd(char **, int);
-cmd_t builtin_handler(char **, int);
-cmd_t env_cmd(char **, int);
+cmd_t exit_cmd(char **, int *);
+cmd_t builtin_handler(char **, int *);
+cmd_t env_cmd(char **, int *);
 
 
 #endif /* main.h */
