@@ -23,6 +23,7 @@ cmd_t exit_cmd(char **cmd, int *status)
 			write(STDERR_FILENO, error, _strlen(error));
 			write(STDERR_FILENO, "\n", 1);
 			free_grid(cmd);
+			*status = 2;
 			exit(*status);
 		}
 	*status = _atoi(cmd[1]);
