@@ -10,6 +10,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <errno.h>
 
 #define BUFFSIZE 10240
 
@@ -30,8 +31,8 @@ typedef enum cmd
 /* =========== SHELL ============ */
 void ch_handler(char *s);
 void error_exit(const char *s);
-int get_cmd(int interactive_mode);
-void execute_cmd(char **args, cmd_t cmd_stat);
+int get_cmd(int interactive_mode, int *err_stat);
+void execute_cmd(char **args, cmd_t cmd_stat, int *err_stat);
 char *path_handler(char *cmd);
 
 
@@ -109,11 +110,11 @@ int _unsetenv(const char *name);
 typedef struct builtin
 {
 	char *cmd;
-	cmd_t (*f)(char **);
+	cmd_t (*f)(char **, int);
 } built_t;
-cmd_t exit_cmd(char **);
-cmd_t builtin_handler(char **);
-cmd_t env_cmd(char **);
+cmd_t exit_cmd(char **, int);
+cmd_t builtin_handler(char **, int);
+cmd_t env_cmd(char **, int);
 
 
 #endif /* main.h */

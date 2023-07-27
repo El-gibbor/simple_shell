@@ -5,15 +5,14 @@
  * @args: an array of pointers to strings / commands.
  * @cmd_stat: command status, whether found or not.
  */
-void execute_cmd(char **args, cmd_t cmd_stat)
+void execute_cmd(char **args, cmd_t cmd_stat, int *status)
 {
 	pid_t child_pid;
-	int status;
+	/* int wait_stat; */
 
 	if (cmd_stat == NOT_FOUND)
 	{
-		execve(args[0], args, environ);
-		perror(args[0]);
+		*status = 127;
 		return;
 	}
 
@@ -21,13 +20,13 @@ void execute_cmd(char **args, cmd_t cmd_stat)
 	switch (child_pid)
 	{
 		case -1:
-			error_exit("fork");
+			*status = errno;
 			break;
 		case 0:
 			execve(args[0], args, environ);
 			break;
 		default:
-			if (wait(&status) == -1)
+			if (wait(status) == -1)
 				error_exit("wait");
 			break;
 	}

@@ -8,6 +8,7 @@
  */
 int main(int ac, char **av)
 {
+	int exit_stat = 0;
 	char *prompt = "#cisfun~$ ";
 	int interactive_mode = isatty(STDIN_FILENO);
 
@@ -18,10 +19,10 @@ int main(int ac, char **av)
 	{
 		if (interactive_mode)
 			write(1, prompt, _strlen(prompt));
-		if (get_cmd(interactive_mode))
+		if (get_cmd(interactive_mode, &exit_stat))
 			break;
 	}
-	return (0);
+	exit(exit_stat);
 }
 
 /**
@@ -29,7 +30,7 @@ int main(int ac, char **av)
  * @interactive_mode: return of isatty(STDIN_FILENO).
  * Return: 0 on success, 1 on error.
  */
-int get_cmd(int interactive_mode)
+int get_cmd(int interactive_mode, int *exit_stat)
 {
 	char *path, **args, *cmd_line = NULL;
 	size_t size = 0;
@@ -51,7 +52,7 @@ int get_cmd(int interactive_mode)
 		free(args);
 		return (0);
 	}
-	/*	if (builtin_handler(args) == TRUE) */
+	/*	if (builtin_handler(args, *exit_stat) == TRUE) */
 	/*{*/
 	/*	free_grid(args);*/
 	/*	return (0);*/
@@ -68,7 +69,7 @@ int get_cmd(int interactive_mode)
 			cmd_stat = FOUND;
 		}
 	}
-	execute_cmd(args, cmd_stat);
+	execute_cmd(args, cmd_stat, exit_stat);
 	free_grid(args);
 	return (0);
 }

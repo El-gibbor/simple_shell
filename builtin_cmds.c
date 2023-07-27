@@ -5,10 +5,10 @@
  * @cmd: an array of commands.
  * Return: Doesn't return, it exits
  */
-cmd_t exit_cmd(char **cmd)
+cmd_t exit_cmd(char **cmd, int status)
 {
 	char error[1024] = "./hsh: 1: exit: Illegal number: ";
-	int i, status = 2;
+	int i;
 
 	if (cmd[1] == NULL)
 	{
@@ -35,7 +35,7 @@ cmd_t exit_cmd(char **cmd)
  * @cmd: an array of commands.
  * Return: always TRUE.
  */
-cmd_t env_cmd(char **cmd)
+cmd_t env_cmd(char **cmd, __attribute__((unused))int status)
 {
 	envlist_t *head;
 
