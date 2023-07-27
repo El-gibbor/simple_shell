@@ -52,11 +52,11 @@ int get_cmd(int interactive_mode, int *exit_stat)
 		free(args);
 		return (0);
 	}
-	/*	if (builtin_handler(args, exit_stat) == TRUE) */
-	/*{*/
-	/*	free_grid(args);*/
-	/*	return (0);*/
-	/*} */
+	if (builtin_handler(args, exit_stat) == TRUE)
+	{
+		free_grid(args);
+		return (0);
+	}
 	/* Search for command in current path and in PATH */
 	if (stat(args[0], &statbuf) != 0)
 	{
