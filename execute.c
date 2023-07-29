@@ -24,10 +24,11 @@ void execute_cmd(char **args, cmd_t cmd_stat, int *status)
 			break;
 		case 0:
 			execve(args[0], args, environ);
-			break;
+			exit(2);
 		default:
-			if (wait(status) == -1)
-				error_exit("wait");
+			wait(status);
+			if (WIFEXITED(*status))
+				*status = WEXITSTATUS(*status);
 			break;
 	}
 }
