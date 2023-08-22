@@ -41,7 +41,7 @@ Although this shell implementation provides basic functionality, there are oppor
 This program has the exact same output as ```sh (/bin/sh)``` as well as the exact same error output. The only difference is that when you print an error, the name of the program is equivalent to your `argv[0]` (See below)   
   
 __Example of error with ```sh```__ ⤵️
-```
+```shell
 elgibbor@ubuntu~$ echo "qwerty" | /bin/sh
 /bin/sh: 1: qwerty: not found
 elgibbor@ubuntu~$ echo "qwerty" | /bin/../bin/sh
